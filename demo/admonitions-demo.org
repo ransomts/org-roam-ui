@@ -1,0 +1,59 @@
+:PROPERTIES:
+:ID:       demo-admonitions
+:END:
+#+title: Admonitions Demo
+
+This note demonstrates admonition callout blocks in the org-roam-ui preview pane.
+
+* Admonition Types
+
+#+begin_note
+This is a *note* block. Use it for supplementary information that
+adds context without being critical to the main content.
+#+end_note
+
+#+begin_tip
+This is a *tip* block. Use it for helpful suggestions that can
+improve the reader's workflow or understanding.
+#+end_tip
+
+#+begin_warning
+This is a *warning* block. Use it when something could cause
+unexpected behavior if the reader isn't careful.
+#+end_warning
+
+#+begin_caution
+This is a *caution* block. Use it when an action might lead
+to data loss or irreversible consequences.
+#+end_caution
+
+#+begin_important
+This is an *important* block. Use it for information the reader
+must not overlook.
+#+end_important
+
+#+begin_danger
+This is a *danger* block. Use it for actions that could cause
+serious harm to systems or data.
+#+end_danger
+
+#+begin_example
+This is an *example* block. Use it for illustrative content
+or sample output.
+#+end_example
+
+#+begin_quote
+This is a *quote* block rendered as an admonition. Use it for
+attributed quotations or referenced material.
+#+end_quote
+
+* Admonitions with Rich Content
+
+#+begin_warning
+Be careful when running =git reset --hard=:
+- It discards all uncommitted changes
+- It cannot be undone
+- It affects both staged and unstaged files
+
+Always run =git stash= first if you want to preserve your work.
+#+end_warning
