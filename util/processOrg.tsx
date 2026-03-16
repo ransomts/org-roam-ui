@@ -168,6 +168,21 @@ export const ProcessedOrg = (props: ProcessedOrgProps) => {
             img: ({ src }) => {
               return <OrgImage src={src as string} file={previewNode?.file} />
             },
+            div: ({ children, className }) => {
+              const classStr = String(className || '')
+              const classes = classStr.split(/\s+/)
+
+              // Footnote definitions: style the container
+              if (classes.includes('footnote-definition')) {
+                return (
+                  <Box fontSize="sm" color="gray.600" mb={2}>
+                    {children as ReactNode}
+                  </Box>
+                )
+              }
+
+              return <div className={classStr || undefined}>{children as ReactNode}</div>
+            },
             section: ({ children, className }) => {
               if (className && (className as string).slice(-1) === `${previewNode.level}`) {
                 return <Box>{(children as React.ReactElement[]).slice(1)}</Box>

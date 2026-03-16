@@ -201,6 +201,21 @@ export const defaultNoteStyle = {
   '.figure p': { textAlign: 'center' },
   '.math.math-display .katex': {
     overflow: 'auto',
-    minHeight: '1.5em'
-  }
+    minHeight: '1.5em',
+  },
+  '.footref': {
+    fontSize: 'xs',
+    verticalAlign: 'super',
+    color: 'blue.400',
+    textDecoration: 'none',
+    _hover: { textDecoration: 'underline' },
+  },
+  '.footnote-definition': {
+    fontSize: 'sm',
+    color: 'gray.600',
+    borderTop: '1px solid',
+    borderTopColor: 'gray.200',
+    pt: 2,
+    mt: 2,
+  },
 }
