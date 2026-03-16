@@ -1,0 +1,33 @@
+:PROPERTIES:
+:ID:       demo-styled-tables
+:END:
+#+title: Styled Tables Demo
+
+This note demonstrates styled tables in the org-roam-ui preview pane.
+
+* Simple Table
+
+| Name    | Role       | Language   |
+|---------+------------+------------|
+| Alice   | Backend    | Go         |
+| Bob     | Frontend   | TypeScript |
+| Charlie | DevOps     | Python     |
+| Diana   | Data       | R          |
+
+* Numeric Data
+
+| Quarter | Revenue | Growth |
+|---------+---------+--------|
+| Q1 2025 | $1.2M   | 12%    |
+| Q2 2025 | $1.5M   | 25%    |
+| Q3 2025 | $1.4M   | -7%    |
+| Q4 2025 | $1.8M   | 29%    |
+
+* Wide Table
+
+| Feature        | Status | Priority | Owner   | Sprint | Notes                          |
+|----------------+--------+----------+---------+--------+--------------------------------|
+| Auth overhaul  | Done   | P0       | Alice   |      3 | Shipped with v2.1              |
+| Dark mode      | WIP    | P1       | Bob     |      4 | Blocked on design review       |
+| Export to PDF  | Todo   | P2       | Charlie |      5 | Needs new dependency           |
+| Mobile support | Todo   | P1       | Diana   |      5 | Depends on responsive redesign |
