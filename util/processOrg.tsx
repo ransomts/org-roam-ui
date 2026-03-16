@@ -30,6 +30,7 @@ import { LinksByNodeId, NodeByCite, NodeById } from '../pages'
 import React, { createContext, ReactNode, useMemo } from 'react'
 import { OrgImage } from '../components/Sidebar/OrgImage'
 import { Section } from '../components/Sidebar/Section'
+import { OrgTable } from '../components/Sidebar/OrgTable'
 import { NoteContext } from './NoteContext'
 import { OrgRoamLink, OrgRoamNode } from '../api'
 
@@ -167,6 +168,9 @@ export const ProcessedOrg = (props: ProcessedOrgProps) => {
             },
             img: ({ src }) => {
               return <OrgImage src={src as string} file={previewNode?.file} />
+            },
+            table: ({ children }) => {
+              return <OrgTable>{children as ReactNode}</OrgTable>
             },
             section: ({ children, className }) => {
               if (className && (className as string).slice(-1) === `${previewNode.level}`) {
