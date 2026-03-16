@@ -201,6 +201,19 @@ export const defaultNoteStyle = {
   '.figure p': { textAlign: 'center' },
   '.math.math-display .katex': {
     overflow: 'auto',
-    minHeight: '1.5em'
-  }
+    minHeight: '1.5em',
+  },
+  '.heading-anchor': {
+    opacity: 0,
+    ml: 1,
+    fontSize: '0.8em',
+    color: 'gray.400',
+    textDecoration: 'none',
+    transition: 'opacity 0.15s',
+    _hover: { color: 'blue.400' },
+  },
+  'h1:hover .heading-anchor, h2:hover .heading-anchor, h3:hover .heading-anchor, h4:hover .heading-anchor, h5:hover .heading-anchor, h6:hover .heading-anchor':
+    {
+      opacity: 1,
+    },
 }

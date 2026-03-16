@@ -38,6 +38,18 @@ import { toString } from 'hast-util-to-string'
 import { Box, chakra } from '@chakra-ui/react'
 import { normalizeLinkEnds } from './normalizeLinkEnds'
 
+const makeHeading = (tag: string) => {
+  const Heading = ({ children, id, ...props }: { children?: ReactNode; id?: string }) => {
+    return React.createElement(
+      tag,
+      { id, ...props },
+      children,
+      id ? React.createElement('a', { className: 'heading-anchor', href: `#${id}` }, '#') : null,
+    )
+  }
+  return Heading
+}
+
 export interface ProcessedOrgProps {
   nodeById: NodeById
   previewNode: OrgRoamNode
@@ -168,6 +180,12 @@ export const ProcessedOrg = (props: ProcessedOrgProps) => {
             img: ({ src }) => {
               return <OrgImage src={src as string} file={previewNode?.file} />
             },
+            h1: makeHeading('h1'),
+            h2: makeHeading('h2'),
+            h3: makeHeading('h3'),
+            h4: makeHeading('h4'),
+            h5: makeHeading('h5'),
+            h6: makeHeading('h6'),
             section: ({ children, className }) => {
               if (className && (className as string).slice(-1) === `${previewNode.level}`) {
                 return <Box>{(children as React.ReactElement[]).slice(1)}</Box>
