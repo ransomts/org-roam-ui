@@ -168,6 +168,66 @@ export const ProcessedOrg = (props: ProcessedOrgProps) => {
             img: ({ src }) => {
               return <OrgImage src={src as string} file={previewNode?.file} />
             },
+            pre: ({ children, className }) => {
+              const classStr = String(className || '')
+
+              // Verse blocks: preserve whitespace with poetic styling
+              if (classStr.includes('verse')) {
+                return (
+                  <Box
+                    as="pre"
+                    fontStyle="italic"
+                    fontFamily="serif"
+                    whiteSpace="pre-wrap"
+                    borderLeftWidth={3}
+                    borderLeftColor="gray.300"
+                    pl={4}
+                    py={2}
+                    my={3}
+                    color="gray.700"
+                  >
+                    {children as ReactNode}
+                  </Box>
+                )
+              }
+
+              return <pre className={classStr || undefined}>{children as ReactNode}</pre>
+            },
+            div: ({ children, className }) => {
+              const classStr = String(className || '')
+              const classes = classStr.split(/\s+/)
+
+              // Center blocks: <div class="center">
+              if (classes.includes('center')) {
+                return (
+                  <Box textAlign="center" my={2}>
+                    {children as ReactNode}
+                  </Box>
+                )
+              }
+
+              // Example blocks: <div class="exampe"> (note: typo in uniorg-rehype)
+              if (classes.includes('exampe') || classes.includes('example')) {
+                return (
+                  <Box
+                    as="pre"
+                    fontFamily="monospace"
+                    fontSize="sm"
+                    bg="gray.100"
+                    p={3}
+                    my={3}
+                    borderRadius="md"
+                    overflow="auto"
+                    whiteSpace="pre-wrap"
+                    color="gray.800"
+                  >
+                    {children as ReactNode}
+                  </Box>
+                )
+              }
+
+              return <div className={classStr || undefined}>{children as ReactNode}</div>
+            },
             section: ({ children, className }) => {
               if (className && (className as string).slice(-1) === `${previewNode.level}`) {
                 return <Box>{(children as React.ReactElement[]).slice(1)}</Box>
