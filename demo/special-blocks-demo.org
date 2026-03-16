@@ -1,0 +1,60 @@
+:PROPERTIES:
+:ID:       demo-special-blocks
+:END:
+#+title: Special Blocks Demo
+
+This note demonstrates center, verse, and example block rendering
+in the org-roam-ui preview pane.
+
+* Center Block
+
+#+begin_center
+This text is centered.
+
+It can span multiple paragraphs, and all of them
+will be centered within the preview pane.
+#+end_center
+
+* Verse Block
+
+#+begin_verse
+Two roads diverged in a yellow wood,
+And sorry I could not travel both
+And be one traveler, long I stood
+And looked down one as far as I could
+To where it bent in the undergrowth;
+
+  — Robert Frost, /The Road Not Taken/
+#+end_verse
+
+Another verse with intentional indentation:
+
+#+begin_verse
+    Great powers come and go,
+        like waves upon the shore;
+    but the tide of knowledge
+        keeps rising evermore.
+#+end_verse
+
+* Example Block
+
+#+begin_example
+$ ls -la /etc/hosts
+-rw-r--r-- 1 root root 221 Mar 15 09:30 /etc/hosts
+
+$ cat /etc/hosts
+127.0.0.1       localhost
+::1             localhost
+192.168.1.100   myserver.local
+#+end_example
+
+* Mixed Content
+
+Here is regular text, followed by a centered callout:
+
+#+begin_center
+*Remember:* These blocks can be combined with other org-mode
+features like *bold*, /italic/, =code=, and [[https://example.com][links]].
+#+end_center
+
+And then back to regular text flow.
