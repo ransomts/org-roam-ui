@@ -165,8 +165,15 @@ export const ProcessedOrg = (props: ProcessedOrgProps) => {
                 </PreviewLink>
               )
             },
-            img: ({ src }) => {
-              return <OrgImage src={src as string} file={previewNode?.file} />
+            img: ({ src, width, height }) => {
+              return (
+                <OrgImage
+                  src={src as string}
+                  file={previewNode?.file}
+                  width={width as string}
+                  height={height as string}
+                />
+              )
             },
             section: ({ children, className }) => {
               if (className && (className as string).slice(-1) === `${previewNode.level}`) {

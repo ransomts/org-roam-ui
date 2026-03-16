@@ -8,10 +8,12 @@ import { Container } from '@chakra-ui/react'
 export interface OrgImageProps {
   src: string
   file: string
+  width?: string
+  height?: string
 }
 
 export const OrgImage = (props: OrgImageProps) => {
-  const { src, file } = props
+  const { src, file, width, height } = props
 
   // const [image, setImage] = useState<any>(null)
 
@@ -47,7 +49,14 @@ export const OrgImage = (props: OrgImageProps) => {
 
   return (
     <Container my={4} position="relative">
-      <img alt="Wow, an image." src={`http://localhost:35901/img/${encodedPath}`} />
+      <img
+        alt="Wow, an image."
+        src={`http://localhost:35901/img/${encodedPath}`}
+        style={{
+          ...(width ? { width } : {}),
+          ...(height ? { height } : {}),
+        }}
+      />
     </Container>
   )
 }
