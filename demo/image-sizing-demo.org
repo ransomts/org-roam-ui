@@ -1,0 +1,43 @@
+:PROPERTIES:
+:ID:       demo-image-sizing
+:END:
+#+title: Image Sizing Demo
+
+This note demonstrates image width and height attribute support
+in the org-roam-ui preview pane.
+
+* Default Size
+
+An image with no size attributes renders at its natural dimensions:
+
+[[https://placehold.co/600x400/EEE/31343C?text=Default+Size]]
+
+* Constrained Width
+
+The same image with a width constraint of 200px. The =width= and
+=height= attributes from the HAST tree are passed through to the
+rendered =<img>= element:
+
+#+ATTR_HTML: :width 200px
+[[https://placehold.co/600x400/EEE/31343C?text=200px+Wide]]
+
+* Explicit Dimensions
+
+An image with both width and height set explicitly:
+
+#+ATTR_HTML: :width 300px :height 150px
+[[https://placehold.co/600x400/EEE/31343C?text=300x150]]
+
+* Percentage Width
+
+Width can also be specified as a percentage:
+
+#+ATTR_HTML: :width 50%
+[[https://placehold.co/600x400/EEE/31343C?text=50+Percent]]
+
+* Notes
+
+Image sizing depends on =#+ATTR_HTML= attributes being preserved
+through the uniorg parsing pipeline into the HAST tree. If attributes
+are not appearing, the uniorg-rehype plugin may need to be extended
+to pass =affiliated= properties through to =hProperties=.
