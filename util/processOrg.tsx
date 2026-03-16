@@ -30,6 +30,7 @@ import { LinksByNodeId, NodeByCite, NodeById } from '../pages'
 import React, { createContext, ReactNode, useMemo } from 'react'
 import { OrgImage } from '../components/Sidebar/OrgImage'
 import { Section } from '../components/Sidebar/Section'
+import { Admonition } from '../components/Sidebar/Admonition'
 import { NoteContext } from './NoteContext'
 import { OrgRoamLink, OrgRoamNode } from '../api'
 
@@ -37,6 +38,17 @@ import { OrgRoamLink, OrgRoamNode } from '../api'
 import { toString } from 'hast-util-to-string'
 import { Box, chakra } from '@chakra-ui/react'
 import { normalizeLinkEnds } from './normalizeLinkEnds'
+
+const ADMONITION_BLOCK_TYPES = new Set([
+  'note',
+  'tip',
+  'warning',
+  'caution',
+  'important',
+  'danger',
+  'example',
+  'quote',
+])
 
 export interface ProcessedOrgProps {
   nodeById: NodeById
@@ -167,6 +179,23 @@ export const ProcessedOrg = (props: ProcessedOrgProps) => {
             },
             img: ({ src }) => {
               return <OrgImage src={src as string} file={previewNode?.file} />
+            },
+            div: ({ children, className }) => {
+              const classStr = String(className || '')
+              const classes = classStr.split(/\s+/)
+
+              // Admonition special blocks: <div class="special-block block-{type}">
+              if (classes.includes('special-block')) {
+                const blockType = classes
+                  .filter((c) => c.startsWith('block-'))
+                  .map((c) => c.slice(6))
+                  .find((t) => ADMONITION_BLOCK_TYPES.has(t))
+                if (blockType) {
+                  return <Admonition type={blockType}>{children as ReactNode}</Admonition>
+                }
+              }
+
+              return <div className={classStr || undefined}>{children as ReactNode}</div>
             },
             section: ({ children, className }) => {
               if (className && (className as string).slice(-1) === `${previewNode.level}`) {
