@@ -1,0 +1,49 @@
+:PROPERTIES:
+:ID:       demo-footnote-styling
+:END:
+#+title: Footnote Styling Demo
+
+This note demonstrates styled footnotes in the org-roam-ui preview pane.
+
+* Overview
+
+Org-roam-ui now renders footnotes with improved visual styling.
+Footnote references appear as superscript links[fn:1], and the
+definitions section at the bottom is visually separated from the
+main content.
+
+* Usage
+
+Footnotes are useful for citations[fn:2], tangential details[fn:3],
+and technical clarifications that would interrupt the flow of the
+main text.
+
+You can reference the same footnote multiple times[fn:1] and it
+will link to the same definition.
+
+* Multiple References in One Paragraph
+
+This paragraph has several footnotes to demonstrate dense
+referencing: the first point[fn:4], then a second[fn:5], and
+a third[fn:6] all in rapid succession.
+
+* Footnotes
+
+[fn:1] This is a basic footnote. It should appear styled with a
+top border separating it from the main content, in a smaller font
+with muted color.
+
+[fn:2] Org-mode footnotes follow the =​[fn:label]= syntax for
+references and =​[fn:label] Definition text= for definitions.
+
+[fn:3] Tangential details like this one keep the main text
+focused while still providing depth for interested readers.
+
+[fn:4] First point elaboration — footnotes can contain *bold*,
+/italic/, =code=, and other org markup.
+
+[fn:5] Second point — multiple footnotes in quick succession
+should each render distinctly.
+
+[fn:6] Third point — the footnote reference numbers should be
+superscript and clickable.
