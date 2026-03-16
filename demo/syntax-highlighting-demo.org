@@ -1,0 +1,68 @@
+:PROPERTIES:
+:ID:       demo-syntax-highlighting
+:END:
+#+title: Syntax Highlighting Demo
+
+This note demonstrates syntax highlighting in the org-roam-ui preview pane.
+
+* Python
+#+begin_src python
+def fibonacci(n):
+    """Generate the first n Fibonacci numbers."""
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+for num in fibonacci(10):
+    print(num)
+#+end_src
+
+* JavaScript
+#+begin_src javascript
+const debounce = (fn, delay) => {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn(...args), delay);
+  };
+};
+
+document.addEventListener('scroll', debounce(() => {
+  console.log('Scrolled!');
+}, 200));
+#+end_src
+
+* Emacs Lisp
+#+begin_src emacs-lisp
+(defun tsr/greeting (name)
+  "Return a greeting for NAME."
+  (let ((hour (string-to-number (format-time-string "%H"))))
+    (cond
+     ((< hour 12) (format "Good morning, %s!" name))
+     ((< hour 18) (format "Good afternoon, %s!" name))
+     (t (format "Good evening, %s!" name)))))
+#+end_src
+
+* SQL
+#+begin_src sql
+SELECT u.name, COUNT(p.id) AS post_count
+FROM users u
+LEFT JOIN posts p ON p.author_id = u.id
+WHERE u.created_at > '2025-01-01'
+GROUP BY u.name
+HAVING COUNT(p.id) > 5
+ORDER BY post_count DESC;
+#+end_src
+
+* Rust
+#+begin_src rust
+fn main() {
+    let numbers: Vec<i32> = (1..=20)
+        .filter(|n| n % 2 == 0)
+        .map(|n| n * n)
+        .collect();
+
+    println!("Even squares: {:?}", numbers);
+}
+#+end_src
